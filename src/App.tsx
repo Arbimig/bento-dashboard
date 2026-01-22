@@ -1,13 +1,20 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import Board from './pages/Board';
 
 function App() {
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+    <Router> 
       <Routes>
         <Route path="/board" element={<Board />} />
-        <Route path="/" element={<div>Welcome! Go to <a href="/board">/board</a></div>} />
+        <Route
+          path="/"
+          element={
+            <div>
+              Welcome! Go to <Link to="/board">/board</Link>
+            </div>
+          }
+        />
       </Routes>
     </Router>
   );
