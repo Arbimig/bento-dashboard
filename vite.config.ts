@@ -1,8 +1,17 @@
-// vite.config.js
+// vite.config.ts (или .js — оба ок)
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
-  base: '/bento-dashboard/',
-})
+
+  base: mode === 'production' ? '/bento-dashboard/' : '/',
+
+  server: {
+    open: true,
+  },
+
+  build: {
+    sourcemap: mode === 'development',
+  },
+}))
